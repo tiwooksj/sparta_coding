@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+		
+		<!-- Webpage Title -->
+    <title>나 홀로 링크 메모장</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+      *{
+        font-family: 'Jua' , sans-serif;
+      }
+      .comment{
+        color:blue;
+        font-weight: bold;
+      }
+      .wrap {
+        width: 900px;
+        margin: auto;
+      }
+      .bordered{
+        max-width: 500px;
+        padding: 2rem;
+        margin: 2rem auto;
+        border-color: #e9ecef;
+        border-radius: 0.3rem;
+        border: solid;
+        display: block;
+      }
+
+      #posting-box{
+        display: none;
+      }
+    </style>
+
+		<script type="text/javascript">
+        function openclose(){
+          if($('#posting-box').css('display')=='block'){
+            $('#posting-box').hide();
+            $('#btn-posting-box').text("포스팅 박스 열기");
+          }else{
+            $('#posting-box').show();
+            $('#btn-posting-box').text("포스팅 박스 닫기");
+          }
+        }
+
+
+        let num = 0;
+        function hey(){
+          num += 1;
+          console.log(num);
+          if (num < 20) {
+            alert("hello " + num +"번 누르셨네요!");
+          } else {
+            alert('앗. 그만 누르세요 이제!');
+          }
+        }
+    </script>
+
+		<!-- JS -->		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+  </head>
+  <body>
+   <div class="wrap">
+    <div class="jumbotron">
+        <h1 class="display-4">나 홀로 링크 메모장!</h1>
+        <p class="lead">중요한 링크를 저장해두고 나중에 볼 수 있는 공간을 제공합니다!</p>
+        <hr class="my-4">
+        <p class="lead">
+          <a id="btn-posting-box" onclick="openclose()" class="btn btn-primary btn-lg" href="#" role="button">포스팅 박스 열기</a>
+        </p>
+    </div>
+    <div id="posting-box" class="bordered">
+      <form>
+        <div class="form-group">
+          <label for="article_url">아티클 URL</label>
+          <input id="article_url" type="text" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label for="commentTextarea">간단 코멘트</label>
+          <textarea class="form-control" id="commentTextarea" rows="3"></textarea>
+        </div>   
+      </form>
+        <button onclick="hey()" type="submit" class="btn btn-primary">기사 저장</button>
+    </div>
+    <div class="card-columns">
+      <div class="card">
+      <img class="card-img-top" src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1024,c_fill,g_auto,h_576,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606120957-california---travel-destination---shutterstock-220315747.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">여기 기사 제목이 들어가죠</h5>
+          <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
+          <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+        </div>
+      </div>
+      <div class="card">
+      <img class="card-img-top" src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1024,c_fill,g_auto,h_576,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606120957-california---travel-destination---shutterstock-220315747.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">여기 기사 제목이 들어가죠</h5>
+          <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
+          <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+        </div>
+      </div>
+      <div class="card">
+      <img class="card-img-top" src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1024,c_fill,g_auto,h_576,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606120957-california---travel-destination---shutterstock-220315747.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">여기 기사 제목이 들어가죠</h5>
+          <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
+          <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+        </div>
+      </div>
+      <div class="card">
+      <img class="card-img-top" src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1024,c_fill,g_auto,h_576,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606120957-california---travel-destination---shutterstock-220315747.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">여기 기사 제목이 들어가죠</h5>
+          <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
+          <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+        </div>
+      </div>
+      <div class="card">
+      <img class="card-img-top" src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1024,c_fill,g_auto,h_576,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606120957-california---travel-destination---shutterstock-220315747.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">여기 기사 제목이 들어가죠</h5>
+          <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
+          <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+        </div>
+      </div>
+      <div class="card">
+      <img class="card-img-top" src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1024,c_fill,g_auto,h_576,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606120957-california---travel-destination---shutterstock-220315747.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">여기 기사 제목이 들어가죠</h5>
+          <p class="card-text">기사의 요약 내용이 들어갑니다. 동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라만세 무궁화 삼천리 화려강산...</p>
+          <p class="card-text comment">여기에 코멘트가 들어갑니다.</p>
+        </div>
+      </div>
+    </div>
+  </div> 
+  </body>
+</html>

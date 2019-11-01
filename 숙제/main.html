@@ -34,6 +34,75 @@
                  max-height: 600px;
             }
         </style>
+      
+        <!--주문 하기-->
+        <script type="text/javascript">
+        
+          $(document).ready(function(){
+            $('#order-table').html('');
+            listing();
+          });
+
+
+        function order(){
+          let customerName=$('#customer-name').val();
+          let quantity=$('#inputState').val();
+          let customerAddress =$('#customer-address').val();
+          let customerPhone=$('#customer-phone').val();
+          let item="tigger"
+
+          $.ajax({ 
+            type:"POST",
+            url:"http://spartacodingclub.shop/order",
+            data: {name_give:customerName, count_give:quantity, address_give:customerAddress, phone_give:customerPhone, item_give:item},
+              success: function (response){
+                if(response['result'] == 'success'){
+                  alert('포스팅 성공!');
+                  window.location.reload();
+                }else{
+                  alert('오류');
+                }
+              }
+            })
+          } 
+
+         function addOrderTable(item,customerName,quantity,customerAddress,customerPhone){
+              let temp_html=
+                '<tr>\
+                  <th scope="row">'+item+'</th>\
+                  <td>'+customerName+'</td>\
+                  <td>'+quantity+'</td>\
+                  <td>'+customerAddress+'</td>\
+                  <td>'+customerPhone+'</td>\
+                </tr>';
+                  $('#order-table').append(temp_html);
+          }
+
+          
+          function listing(){
+            console.log('화면 로딩 후 잘 실행되었습니다');
+            $.ajax({
+              type:"GET",
+              url:"http://spartacodingclub.shop/order?item_give=tigger",
+              data: {},
+              success: function (response){
+               if(response['result']=='success'){
+                let orders = response['orders'];
+                for (let i=0; i<orders.length; i++) {
+                  console.log(orders[i])
+                  addOrderTable(orders[i]['item'], orders[i]['name'], orders[i]['count'], orders[i]['address'], orders[i]['phone']);
+                }
+               }else{
+                alert('주문내역을 받아오지 못했습니다');
+               }
+            }
+          })
+          }
+            
+          </script>
+          
+
+    
 
       </head>
       <body>
@@ -44,7 +113,7 @@
           <hr class="my-4">
           <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
           <p class="lead">
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+            <a onclick="" class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
           </p>
         </div>
 
@@ -82,9 +151,9 @@
 
          <!--required data for order-->
          <div class="form-group row">
-            <label for="주문사 성함" class="col-sm-2 col-form-label col-form-label-lg">주문자 성함:</label>
+            <label for="주문자 성함" class="col-sm-2 col-form-label col-form-label-lg">주문자 성함:</label>
             <div class="col-md-10">
-            <input type="text" class="form-control col-form-label-lg" placeholder="예: 홍길동">
+            <input id="customer-name" type="text" class="form-control col-form-label-lg" placeholder="예: 홍길동">
             </div>
         </div>
         <div class="form-group row">
@@ -102,15 +171,33 @@
         <div class="form-group row">
             <label for="주소" class="col-sm-2 col-form-label col-form-label-lg">주소:</label>
             <div class="col-md-10">
-                <input type="text" class="form-control col-form-label-lg" placeholder="">
+                <input id="customer-address" type="text" class="form-control col-form-label-lg" placeholder="">
             </div>
         </div>
         <div class="form-group row">
         <label for="전화번호" class="col-sm-2 col-form-label col-form-label-lg">전화번호:</label>
         <div class="col-md-10">
-          <input type="text" class="form-control col-form-label-lg" placeholder="예: 010-XXXX-XXXX">
+          <input id="customer-phone" type="text" class="form-control col-form-label-lg" placeholder="예: 010-XXXX-XXXX">
         </div>
       </div>
+      <button onclick="order()" type="button" class="btn btn-primary">주문하기</button>
     </div>
+    <p>
+    <!--주문 내역 테이블-->
+      <table class="table center">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">상품명</th>
+            <th scope="col">이름</th>
+            <th scope="col">수량</th>
+            <th scope="col">주소</th>
+            <th scope="col">전화번호</th>
+          </tr>
+        </thead>
+        <tbody id="order-table">
+        </tbody>
+    </table>
+
+
       </body>
     </html>

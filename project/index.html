@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>news scrapper!</title>
+
+	<!--bootstrap CSS-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<!--jquery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<style type="text/css">
+	.centered {
+ 		position: fixed;
+  		top: 50%;
+  		left: 50%;
+  		margin-top: -50px;
+  		margin-left: -100px;
+	}
+	</style>
+
+	<script type="text/javascript">
+		
+		
+		
+		function inputKeyword(){
+			let keyword_received = $('#keyword').val();
+			alert(keyword_received);
+			addKeywordBanner(keyword_received);
+		}
+		
+		function addKeywordBanner(keyword_received){
+			let temp_banner = '<p>'+keyword_received
+			$('#keywordBanner').append(temp_banner);
+		}
+
+	</script>
+
+</head>
+<body>
+
+	<form>
+	  <div class="centered">
+	  	<h2>내맘대로 키워드 뉴스!</h2>
+	   <div class="form-group">
+	     <label for="keyword">키워드</label>
+	     <input type="text" class="form-control" id="keyword" placeholder="키워드 입력">
+	   </div>
+	   <button onclick="inputKeyword()" type="submit" class="btn btn-primary">Submit</button>
+	   <p>
+
+	   <div id="keywordBanner">
+	    <span class="badge badge-pill badge-success">Success</span>
+        <span class="badge badge-pill badge-danger">Danger</span>
+        <span class="badge badge-pill badge-warning">Warning</span>
+       </div>
+	  </div>
+	</form>
+
+
+
+</body>
+</html>
